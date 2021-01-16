@@ -6,7 +6,7 @@
 
         <h2>Ability Score</h2>
         <div v-for="item in abscores" :key="item.text">
-            {{item.text}} <input v-on:change="input_check(item)" v-model="item.val" /> MOD: {{get_mod(item)}}
+            {{item.text}} <input v-on:change="input_check(item)" v-model="item.val" />
         </div>
         {{msg}}
 
@@ -67,10 +67,6 @@ export default class AbilityScore extends Vue {
             abs.val = 0;
             this.msg = "Input must only be integers";
         }
-    }
-
-    public get_mod(abs:ABSCORE){
-        return Math.floor((abs.val-10)/2);
     }
 
 }
