@@ -5,10 +5,12 @@
     <div>
 
         <h2>Ability Score</h2>
-        <div v-for="item in abscores" :key="item.text">
-            {{item.text}} <input v-on:change="input_check(item)" v-model="item.val" />
+        <div v-for="(item, index) in scores" :key=index>
+            Score #{{index}} <input v-on:change="input_check(index)" v-model="scores[index]" /> MOD: {{get_mod(scores[index])}}
         </div>
         {{msg}}
+
+        <button v-on:click="rand_roll()">Roll</button>
 
     </div>
 </template>
@@ -17,19 +19,13 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
-interface ABSCORE {
-    text: string;
-    val: number;
-}
-
 @Component({
     
 })
 
 export default class AbilityScore extends Vue {
 
-    public abscores: ABSCORE[] = [];
-    public stats: string[] = ['STR','DEX','CON','INT','WIS','CHA'];
+    public scores: number[] = [0, 0, 0, 0, 0, 0];
     public msg: string = "";
 
 
@@ -39,34 +35,71 @@ export default class AbilityScore extends Vue {
     }
 
     // Functions (Methods)
-    public mounted(){
-        this.load();
-    }
-    
-    public load(){
-        console.log("Initialize scores")
-        
-        var idx;
-
-        for (idx = 0; idx < this.stats.length; idx++){
-            let abs: ABSCORE = {
-                text: this.stats[idx],
-                val: 0
-            };
-
-            this.abscores.push(abs);
-        }
-        
-    }
-
-    public input_check(abs:ABSCORE){
-        console.log("Checking for valid input");
+    public input_check(idx:number){
         this.msg = "";
         
-        if (!(abs.val >= 0 && abs.val <= 20)){
-            abs.val = 0;
-            this.msg = "Input must only be integers";
+        if (!(this.scores[idx] >= 0 && this.scores[idx] <= 20)){
+            this.scores[idx] = 0;
+            this.msg = "Input must only be integers within 0 and 20";
         }
+    }
+
+    public rand_roll(){        
+        let temp_scores: number[] = this.scores;
+
+        // Keep rolling random 6 numbers until they are a valid set
+        do{
+            for(var i=0; i<this.scores.length; i++){
+                let roll = 0;
+                let smallest = 0;
+                
+                // Emulating real-life random rolls prescribed by guide
+                for (var j=0; j<4; j++){
+                    let x = Math.floor(Math.random() * 6) + 1;
+
+                    if (!smallest || x < smallest){
+                        smallest = x;
+                    }
+                    roll += x;
+
+                }
+            temp_scores[i] = roll - smallest;
+
+            }
+        } while(this.check_invalid(temp_scores))
+
+        // Save rolls if they are valid
+        for(var i=0; i<this.scores.length; i++){
+            Vue.set(this.scores, i, temp_scores[i])
+        }
+        
+    }
+
+    public get_mod(val:number){
+        return Math.floor((val-10)/2);
+    }
+
+    public check_invalid(scores:number[]){
+        let total_mod = 0;
+
+        for (var i=0; i<scores.length; i++){
+            // Special rule: If any of the scores are too low (< 8), set is invalid
+            if (scores[i] < 8){
+                total_mod = 0;
+                break
+            }
+            console.log("Calculated mod: " + this.get_mod(scores[i]));
+            total_mod += this.get_mod(scores[i]);
+        }
+
+        console.log("Total mod is " + total_mod)
+
+        if (total_mod < 4){
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }
