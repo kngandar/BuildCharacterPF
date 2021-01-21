@@ -4,7 +4,8 @@
 <template>
     <div>
         
-
+    <h2>End Screen</h2>
+    
     </div>
 </template>
 

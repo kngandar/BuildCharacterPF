@@ -8,6 +8,7 @@
         <div v-for="item in classes" :key="item.name">
             <input type="radio" v-model="chosen" v-bind:value="item" /> {{item.name}}
         </div>
+        
         Class: {{chosen.name}} ({{chosen.type}}) <br>
         Base Attack Bonus (BAB): {{chosen.bab}} <br>
         Fortitude (Fort): {{chosen.fort}} <br>

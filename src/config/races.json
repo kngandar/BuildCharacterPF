@@ -1,0 +1,138 @@
+{
+    "races":[
+        {"name": "human",
+            "type": "core",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "any": "+2"
+            }
+        },
+        {"name": "dwarf",
+            "type": "core",
+            "speed": "20",
+            "size": "medium",
+            "stats": {
+                "con": "+2",
+                "wis": "+2",
+                "cha": "-2"
+            }
+        },
+        {"name": "elf",
+            "type": "core",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "dex": "+2",
+                "int": "+2",
+                "con": "-2"
+            }
+        },
+        {"name": "gnome",
+            "type": "core",
+            "speed": "20",
+            "size": "small",
+            "stats":{
+                "con": "+2",
+                "cha": "+2",
+                "str": "-2"
+            }
+        },
+        {"name": "half-elf",
+            "type": "core",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "any": "+2"
+            }
+        },
+        {"name": "half-orc",
+            "type": "core",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "any": "+2"
+            }
+        },
+        {"name": "halfling",
+            "type": "core",
+            "speed": "20",
+            "size": "small",
+            "stats":{
+                "dex": "+2",
+                "cha": "+2",
+                "str": "-2"
+            }
+        },
+        {"name": "catfolk",
+            "type": "featured",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "dex": "+2",
+                "cha": "+2",
+                "wis": "-2"
+            }
+        },
+        {"name": "fetchling",
+            "type": "featured",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "dex": "+2",
+                "cha": "+2",
+                "wis": "-2"
+            }
+        },
+        {"name": "ifrit",
+            "type": "featured",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "dex": "+2",
+                "cha": "+2",
+                "wis": "-2"
+            }
+        },
+        {"name": "oread",
+            "type": "featured",
+            "speed": "20",
+            "size": "medium",
+            "stats": {
+                "str": "+2",
+                "wis": "+2",
+                "cha": "-2"
+            }
+        },
+        {"name": "sylph",
+            "type": "featured",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "dex": "+2",
+                "int": "+2",
+                "con": "-2"
+            }
+        },
+        {"name": "tengu",
+            "type": "featured",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "dex": "+2",
+                "wis": "+2",
+                "con": "-2"
+            }
+        },
+        {"name": "undine",
+            "type": "featured",
+            "speed": "30",
+            "size": "medium",
+            "stats": {
+                "dex": "+2",
+                "wis": "+2",
+                "str": "-2"
+            }
+        }
+    ]
+}

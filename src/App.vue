@@ -5,8 +5,8 @@
     <div>
         <ability-score v-if="stage==0"></ability-score>
         <class-selection v-if="stage==1"></class-selection>
-        <assign-scores v-if="stage==2"></assign-scores>
-        <race-selection v-if="stage==3"></race-selection>
+        <race-selection v-if="stage==2"></race-selection>
+        <assign-scores v-if="stage==3"></assign-scores>        
         <end-screen v-if="stage==4"></end-screen>
 
         <button v-on:click="stage+=1">Next</button>
