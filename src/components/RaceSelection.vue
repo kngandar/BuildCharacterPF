@@ -23,31 +23,14 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-
 import * as data from '../config/races.json';
+import service, {RACE} from "../service";
 
-interface RACE {
-    name: string;
-    type: string;
-    speed: string;
-    size: string;
-    stats: {str?:string;
-            dex?:string;
-            con?:string;
-            int?:string;
-            wis?:string;
-            cha?:string;
-            any?:string;};
-}
-
-@Component({
-    
-})
+@Component({})
 
 export default class RaceSelection extends Vue {
 
     public races: RACE[] = [];
-    public chosen: RACE = data.races[0];
 
     constructor() {
         super();
@@ -55,6 +38,11 @@ export default class RaceSelection extends Vue {
 
     public mounted(){
         this.races = data.races;
+        service.race = data.races[0];
+    }
+
+    public get chosen(){
+        return service.race;
     }
 
 }

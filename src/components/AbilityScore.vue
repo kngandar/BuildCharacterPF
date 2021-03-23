@@ -18,20 +18,20 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import service from "../service";
 
-@Component({
-    
-})
+@Component({})
 
 export default class AbilityScore extends Vue {
 
-    public scores: number[] = [0, 0, 0, 0, 0, 0];
+
     public msg: string = "";
 
 
     // Runs on load
     constructor() {
         super();
+
     }
 
     // Functions (Methods)
@@ -100,6 +100,10 @@ export default class AbilityScore extends Vue {
             return false;
         }
 
+    }
+
+    public get scores(){
+        return service.scores;
     }
 
 }

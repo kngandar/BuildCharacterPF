@@ -12,10 +12,9 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import service, {RACE, CLASS} from "../service";
 
-@Component({
-    
-})
+@Component({})
 
 export default class EndScreen extends Vue {
 

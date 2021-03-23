@@ -23,27 +23,14 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-
 import * as data from '../config/classes.json';
+import service, {CLASS} from "../service";
 
-interface CLASS {
-    name: string;
-    type: string;
-    bab: string;
-    fort: string;
-    ref: string;
-    will: string;
-    hd: string;
-}
-
-@Component({
-    
-})
+@Component({})
 
 export default class ClassSelection extends Vue {
 
     public classes: CLASS[] = [];
-    public chosen: CLASS = data.classes[0];
 
     constructor() {
         super();
@@ -51,6 +38,11 @@ export default class ClassSelection extends Vue {
 
     public mounted(){
         this.classes = data.classes;
+        service.class = data.classes[0];
+    }
+
+    public get chosen(){
+        return service.class;
     }
 
 }
